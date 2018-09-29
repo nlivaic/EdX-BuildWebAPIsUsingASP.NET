@@ -17,6 +17,10 @@ namespace SerializeWithCSharp
             Console.WriteLine($"The product Id is {product2.Id}.");
             Console.WriteLine($"The product Name is {product2.Name}.");
             Console.WriteLine($"The product Price is {product2.Price}.");
+            // Deserialize the JSON string back to the Product object.
+            DifferentProductClass differentProduct = JsonConvert.DeserializeObject<DifferentProductClass>(serializedProduct);
+            Console.WriteLine($"The differentProduct Id is {differentProduct.Id}.");
+            Console.WriteLine($"The differentProduct Price is {differentProduct.Price}.");
         }
     }
 
@@ -25,5 +29,12 @@ namespace SerializeWithCSharp
         public int Id { get; set; }
         public string Name { get; set; }
         public double Price { get; set; }
+    }
+    
+    class DifferentProductClass
+    {
+        public int Id { get; set; }
+        public double Price { get; set; }
+        public DateTime DateOfManufacturing { get; set; }
     }
 }
