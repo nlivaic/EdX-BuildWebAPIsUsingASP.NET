@@ -1,0 +1,20 @@
+<html>
+<head>
+    <script>
+        var product1 = { Id: 1, Name: "Red Apple", Price: 1.99 }
+        // Serialize JavaScript product object to JSON string
+        var serializedProduct = JSON.stringify(product1);
+        document.write(serializedProduct);
+        document.write('<br />');
+        // Deserialize Json string back to product object.
+        var jsonString = '{"Id":1,"Name":"Red Apple","Price":1.99}';
+        var product2 = JSON.parse(jsonString);
+        document.write('Product Id is ' + product2.Id + '<br />');
+        document.write('Product Name is ' + product2.Name + '<br />');
+        document.write('Product Price is ' + product2.Price + '<br />');
+    </script>
+</head>
+<body>
+    <h1>Welcome to my App</h1>
+</body>
+</html>
