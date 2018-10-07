@@ -55,6 +55,10 @@ namespace WebServer.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]Product product)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
             int id = FakeData.Products.Keys.Max() + 1;
             product.ID = id;
             FakeData.Products.Add(product.ID, product);
@@ -63,9 +67,9 @@ namespace WebServer.Controllers
         [HttpPut("{id}")]
         public IActionResult Put([FromRoute]int id, [FromBody]Product product)
         {
-            if (FakeData.Products == null || FakeData.Products.Count() == 0 || !FakeData.Products.Keys.Contains(id))
+            if (!FakeData.Products.Keys.Contains(id) || !ModelState.IsValid)
             {
-                return NotFound();
+                return BadRequest();
             }
             FakeData.Products[id] = product;
             return Ok();
